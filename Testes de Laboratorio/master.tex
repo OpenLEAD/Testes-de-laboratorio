@@ -1,0 +1,123 @@
+
+
+%%******************************************************************************
+%% CONFIGURATION
+%%******************************************************************************
+
+
+\documentclass[a4paper,11pt,oneside,openany,brazilian, version=last,draft=false,]{article}
+
+
+
+
+%%******************************************************************************
+%% DOCUMENT STYLE
+%%******************************************************************************
+
+
+\usepackage{graphicx}
+\usepackage{mybook}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage{geometry}
+
+\pdfcompresslevel = 9
+\oddsidemargin = 31pt
+\topmargin = 20pt
+\headheight = 12pt
+\headsep = 25pt
+\textheight = 592pt
+\textwidth = 390pt
+\marginparsep = 10pt
+\marginparwidth = 35pt
+\footskip = 30pt
+
+%%******************************************************************************
+%% MAIN BODY
+%%******************************************************************************
+
+\begin{document}
+
+%%==============================================================================
+%% FRONT MATTER
+%%==============================================================================
+
+%\frontmatter
+
+\include{00_frontpage}
+\include{00_header}
+
+
+
+%%==============================================================================
+%% SUMMARY
+%%==============================================================================
+
+%\tableofcontents
+
+
+%%==============================================================================
+%% LIST OF TABLES, FIGURES, AND LISTINGS
+%%==============================================================================
+
+%\listoffigures
+%\listoftables
+%
+%\lstlistoflistings
+
+
+%%==============================================================================
+%% MAIN MATTER
+%%==============================================================================
+
+%\mainmatter
+
+\tableofcontents
+\listoffigures
+%Indutivo
+\section{Teste Indutivo}
+\include{indutivo/01_Purpose}
+\include{indutivo/02_Materials}
+\include{indutivo/03_Method}
+\include{indutivo/04_Data}
+\include{indutivo/05_Results}
+\include{indutivo/06_Analysis}
+\include{indutivo/07_Conclusion}
+\include{indutivo/08_Figures}
+\include{indutivo/09_References}
+% SONAR
+\section{Teste Sonar}
+\include{sonar/01_Purpose}
+\include{sonar/02_Materials}
+\include{sonar/03_Method}
+\include{sonar/04_Data}
+\include{sonar/05_Results}
+\include{sonar/06_Analysis}
+\include{sonar/07_Conclusion}
+\include{sonar/08_Figures}
+\include{sonar/09_References}
+%\include{Apendix II - Eletrônica}
+
+
+
+
+
+
+%%==============================================================================
+%% APPENDIX - Team
+%%==============================================================================
+
+%\appendix
+
+
+
+
+%%==============================================================================
+%% BACK MATTER - Bibliography and Signature
+%%==============================================================================
+
+%\backmatter
+
+\end{document}
