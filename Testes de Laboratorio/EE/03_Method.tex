@@ -62,18 +62,54 @@ O projeto da placa teste pode ser visto na figura~\ref{fig:prototipo}.
  \label{fig:prototipo}
  \end{figure}
 
-\subsubsection{Desenvolvimento da placa eletrônica}
+\subsubsection{Desenvolvimento da placa eletrônica e Testes}
 Após a elaboração do projeto, uma placa do tipo protoboard foi utilizada para
-realizar todas as conexões de alimentação e comunicação.
+realizar todas as conexões de alimentação e comunicação. A implementação da
+placa, seguida de teste, foi a seguinte:
+\begin{itemize}
+  \item Pino banana para alimentação externa (bateria);
+  \item Série e conector da bateria;
+  \item Teste de trilha $24V$ da placa;
+  \item Solda do conversor DC/DC $3.3V$ e teste de trilha;
+  \item Solda de módulo Ethernet SCH-remote (barra de pino): Vcc ($3.3V$), GND e
+  Reset ($3.3V$);
+  \item Solda de conector Molex 4 vias para sensor indutivo: Vcc, GND e sinal
+  para GPIO10;
+  \item Solda de resistores $6.8k\Omega$ e $1k\Omega$ para o divisor de tensão.
+  Teste de saída do sinal;
+  \item Solda de conector Molex 4 vias para sensor indutivo 2: Vcc, GND e sinal
+  para GPIO10;
+  \item Solda de resistores $6.8k\Omega$ e $1k\Omega$ para o divisor de tensão.
+  Teste de saída do sinal;
+  \item Conector do sonar para alimentação e teste do sonar com conversor
+  RS232-USB;
+  \item Conexão IMU com placa eletrônica através de cabo flat. Teste do IMU;
+  \item Conexão de alimentação do profundímetro;
+  \item Solda de conversor $5V$;
+  \item Conexões do componente MAX485 com alimentação $5V$ e comunicação
+  SCH-remote;
+  \item Teste de comunicação com profundímetro através de MAX485;  
+\end{itemize}
 
-\begin{figure}[h!]
+A placa finalizada se encontra na figura~\ref{fig:board1} e
+figura~\ref{fig:board2}.
+
+
+\begin{figure}[H]
  \centering
- \includegraphics[width=1\columnwidth]{indutivo/figs/indutivo_bancada.png}
- \caption{Eletrônica do sensor indutivo}
- \label{fig:indu_banc}
+ \includegraphics[width=1\columnwidth]{EE/figs/board1.JPG}
+ \caption{Verso da placa eletrônica}
+ \label{fig:board1}
+ \end{figure}
+ 
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/board2.JPG}
+ \caption{Frente da placa eletrônica}
+ \label{fig:board2}
  \end{figure}
 
-
+\subsubsection{Desenvolvimento de encapsulamento mecânico}
  
 
 \label{metodos}
