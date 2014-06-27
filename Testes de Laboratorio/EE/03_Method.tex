@@ -9,8 +9,7 @@
 \subsection{Métodos}
 Os métodos para a elaboração dos testes da eletrônica embarcada são subdivididos
 em: planejamento e projeto, desenvolvimento da placa eletrônica, testes da
-eletrônica, desenvolvimento de encapsulamento mecânico, montagem e emenda de
-cabos submarinos, e teste da integração.
+eletrônica, encapsulamento mecânico e cabeamento, e teste da integração.
 
 \subsubsection{Planejamento}
 O planejamento consiste em avaliar os sensores disponíveis que serão usados na
@@ -88,7 +87,8 @@ placa, seguida de teste, foi a seguinte:
   \item Solda de conversor $5V$;
   \item Conexões do componente MAX485 com alimentação $5V$ e comunicação
   SCH-remote;
-  \item Teste de comunicação com profundímetro através de MAX485;  
+  \item Teste de comunicação com profundímetro através de MAX485 ainda n'ao foi
+  realizado;
 \end{itemize}
 
 A placa finalizada se encontra na figura~\ref{fig:board1} e
@@ -104,13 +104,113 @@ figura~\ref{fig:board2}.
  
  \begin{figure}[H]
  \centering
- \includegraphics[width=1\columnwidth]{EE/figs/board2.JPG}
+ \includegraphics[width=1\columnwidth]{EE/figs/board2.pdf}
  \caption{Frente da placa eletrônica}
  \label{fig:board2}
  \end{figure}
 
-\subsubsection{Desenvolvimento de encapsulamento mecânico}
+\subsubsection{Encapsulamento mecânico e cabeamento}
+A fase de encapsulamento e cabeamento é realizada logo após os testes da placa
+customizada e ela consiste em especificar, desenvolver e montar uma estrutura
+que proteja os sensores internos contra choque, vibração e água. O laboratório
+LEAD já tem experiência em protótipos de encapsulamentos deste nível, pois muito
+foi desenvolvido no projeto LUMA, ROV com expedição Antártida. Portanto, após
+análise do grupo de mecânica, a solução mais simples encontrada é a reutilização
+da versão 1 do tubo à prova d'água do LUMA, figura~\ref{fig:tubo}. A vedação é
+realizada através de O-rings. 
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/tubo.jpg}
+ \caption{Tubo do LUMA, versão 1}
+ \label{fig:tubo}
+ \end{figure}
+ Escolhida a estrutura, prosseguiu-se para a fase de montagem do sistema. A
+ placa customizada foi cortada nas dimensões do tubo e presa com parafusos,
+ como indicado na figura~\ref{fig:montagem}. Deve-se atentar ao curto que os
+ parafusos podem fazer na placa, logo faz-se a conferência de curtos após o fim
+ da montagem.	
  
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/montagem.jpg}
+ \caption{Montagem da placa no tubo}
+ \label{fig:montagem}
+ \end{figure}
+ O cabeamento dentro da eletrônica embarcada deve ser conciso para facilitar o
+ roteamento de cabos internos. Nas figura~\ref{fig:ee_pinos1} e
+ figura~\ref{fig:ee_pinos2}, podemos observar a pinagem de entrada/saída da
+ eletrônica embarcada:
+ \begin{itemize}
+   \item Sensor indutivo 1: Vcc, GND e sinal.
+   \item Sensor indutivo 2: Vcc, GND e sinal.
+   \item Sonar: Vcc, GND, RS232+, RS232-.
+   \item Umbilical: total de 16 vias:
+   \begin{enumerate}
+     \item 8 vias para Ethernet.
+     \item Indutivo 1 - sinal.
+     \item Indutivo 2 - sinal.
+     \item $RS485$ A - sonar.
+     \item $RS485$ B - sonar.
+     \item $RS485$ A - profundímetro.
+     \item $RS485$ B - profundímetro.
+     \item Vcc.
+     \item GND.
+   \end{enumerate}
+   \item Botão liga/desliga: Vcc, GND, sinal. 
+ \end{itemize}
+ 
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/ee_pinos1.pdf}
+ \caption{Pinagem da eletrônica embarcada - vista frontal}
+ \label{fig:ee_pinos1}
+ \end{figure}
+ 
+  \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/ee_pinos2.JPG}
+ \caption{Pinagem da eletrônica embarcada - vista lateral}
+ \label{fig:ee_pinos2}
+ \end{figure}
+ 
+ Para todo o cabeamento externo foram necessárias emendas à
+ prova d'água. As emendas ocorrem entre o cabo com conector à prova d'água do
+ tubo com o cabo específico de cada dispositivo externo: sonar e sensores
+ indutivos. A emenda é realizada da seguinte forma: soldagem das vias de
+ cada cabo, respeitando a pinagem, proteção de curto com espaguete
+ termo-retrátil e, após todas as conexões, é utilizada mangueira e selante
+ elástico à base de poliuretano (Vedaflex) para que a emenda seja à prova
+ d'água. Nas figura~\ref{fig:emenda_sonar}, figura~\ref{fig:emenda_indutivo} e
+ figura~\ref{fig:emenda_umbilical}, podemos observar as emendas do sonar, sensor
+ indutivo e umbilical, respectivamente.
+  
+ \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/emenda_sonar.JPG}
+ \caption{Emenda do Sonar}
+ \label{fig:emenda_sonar}
+ \end{figure}
+ 
+  \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/emenda_indutivo.JPG}
+ \caption{Emenda do sensor indutivo}
+ \label{fig:emenda_indutivo}
+ \end{figure}
+ 
+  \begin{figure}[H]
+ \centering
+ \includegraphics[width=1\columnwidth]{EE/figs/emenda_umbilical.JPG}
+ \caption{Emenda do umbilical}
+ \label{fig:emenda_umbilical}
+ \end{figure}
+
+\subsubsection{Teste de integração}
+Após a montagem, a última fase são os testes de integração. Os testes visam
+verificar a comunicação de todo o sistema já montado eletrônica e mecanicamente.
+Foram testados todos os sensores com os drivers disponíveis até o momento:
+sensores indutivos via Ethernet, IMU via Ethernet (sem interpretação de
+pacotes) e profundímetro via Siow .
 
 \label{metodos}
 
